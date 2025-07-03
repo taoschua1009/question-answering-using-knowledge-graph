@@ -1,0 +1,534 @@
+{
+  "evaluation_info": {
+    "timestamp": "2025-07-04T03:08:25.611919",
+    "type": "live_system_accuracy_test",
+    "model_info": {
+      "llm": "Azure GPT-4",
+      "database": "Neo4j",
+      "framework": "LangChain"
+    }
+  },
+  "overall_metrics": {
+    "total_questions": 10,
+    "successful_tests": 10,
+    "success_rate": 1.0,
+    "average_precision": 1.0,
+    "average_recall": 0.99,
+    "average_f1": 0.9947368421052631,
+    "exact_match_rate": 0.9,
+    "average_count_accuracy": 0.99
+  },
+  "detailed_results": [
+    {
+      "id": 1,
+      "question": "Các triệu chứng của U xơ tử cung?",
+      "category": "symptoms",
+      "answer": "Các triệu chứng của U xơ tử cung bao gồm:\n1. Ra máu nhiều trong kỳ kinh\n2. Ra máu bất thường\n3. Đau bụng kinh\n4. Vô sinh\n5. Đau khi quan hệ tình dục\n6. Sẩy thai tái phát\n7. Sinh non\n8. Đau bụng dưới hoặc vùng chậu\n9. Bụng to ra",
+      "predicted_items": [
+        "ra máu nhiều trong kỳ kinh",
+        "ra máu bất thường",
+        "đau bụng kinh",
+        "vô sinh",
+        "đau khi quan hệ tình dục",
+        "sẩy thai tái phát",
+        "sinh non",
+        "đau bụng dưới hoặc vùng chậu",
+        "bụng to ra"
+      ],
+      "db_items": [
+        "ra máu nhiều trong kỳ kinh",
+        "ra máu bất thường",
+        "đau bụng kinh",
+        "vô sinh",
+        "đau khi quan hệ tình dục",
+        "đau khi quan hệ tình dục",
+        "sẩy thai tái phát",
+        "sinh non",
+        "đau bụng dưới hoặc vùng chậu",
+        "bụng to ra"
+      ],
+      "cypher_query": "MATCH (d:Disease {name: \"U xơ tử cung\"})-[:HAS_SYMPTOM]->(s:Symptom)\nRETURN s.name",
+      "db_results_raw": "[{'s.name': 'ra máu nhiều trong kỳ kinh'}, {'s.name': 'ra máu bất thường'}, {'s.name': 'đau bụng kinh'}, {'s.name': 'vô sinh'}, {'s.name': ['đau khi quan hệ tình dục', 'Đau khi quan hệ tình dục']}, {'s.name': 'sẩy thai tái phát'}, {'s.name': 'sinh non'}, {'s.name': 'đau bụng dưới hoặc vùng chậu'}, {'s.name': 'bụng to ra'}]",
+      "evaluation": {
+        "exact_match": false,
+        "precision": 1.0,
+        "recall": 0.9,
+        "f1": 0.9473684210526316,
+        "count_accuracy": 0.9,
+        "matched_items": [
+          {
+            "database": "ra máu nhiều trong kỳ kinh",
+            "predicted": "ra máu nhiều trong kỳ kinh",
+            "similarity": 1.0
+          },
+          {
+            "database": "ra máu bất thường",
+            "predicted": "ra máu bất thường",
+            "similarity": 1.0
+          },
+          {
+            "database": "đau bụng kinh",
+            "predicted": "đau bụng kinh",
+            "similarity": 1.0
+          },
+          {
+            "database": "vô sinh",
+            "predicted": "vô sinh",
+            "similarity": 1.0
+          },
+          {
+            "database": "đau khi quan hệ tình dục",
+            "predicted": "đau khi quan hệ tình dục",
+            "similarity": 1.0
+          },
+          {
+            "database": "sẩy thai tái phát",
+            "predicted": "sẩy thai tái phát",
+            "similarity": 1.0
+          },
+          {
+            "database": "sinh non",
+            "predicted": "sinh non",
+            "similarity": 1.0
+          },
+          {
+            "database": "đau bụng dưới hoặc vùng chậu",
+            "predicted": "đau bụng dưới hoặc vùng chậu",
+            "similarity": 1.0
+          },
+          {
+            "database": "bụng to ra",
+            "predicted": "bụng to ra",
+            "similarity": 1.0
+          }
+        ],
+        "missed_items": [
+          "đau khi quan hệ tình dục"
+        ],
+        "extra_items": [],
+        "predicted_count": 9,
+        "actual_count": 10,
+        "notes": "Matched 9/10 items"
+      },
+      "success": true,
+      "error": null
+    },
+    {
+      "id": 2,
+      "question": "Cách điều trị U xơ tử cung?",
+      "category": "treatment",
+      "answer": "Một trong những cách điều trị U xơ tử cung là phẫu thuật.",
+      "predicted_items": [
+        "một trong những cách điều trị u xơ tử cung là phẫu thuật."
+      ],
+      "db_items": [
+        "phẫu thuật"
+      ],
+      "cypher_query": "MATCH (d:Disease {name: \"U xơ tử cung\"})-[:HAS_TREATMENT]->(t:Treatment)\nRETURN t.name",
+      "db_results_raw": "[{'t.name': 'phẫu thuật'}]",
+      "evaluation": {
+        "exact_match": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "count_accuracy": 1.0,
+        "matched_items": [
+          {
+            "database": "phẫu thuật",
+            "predicted": "một trong những cách điều trị u xơ tử cung là phẫu thuật.",
+            "similarity": 0.85
+          }
+        ],
+        "missed_items": [],
+        "extra_items": [],
+        "predicted_count": 1,
+        "actual_count": 1,
+        "notes": "Matched 1/1 items"
+      },
+      "success": true,
+      "error": null
+    },
+    {
+      "id": 3,
+      "question": "U xơ tử cung ảnh hưởng đến ai?",
+      "category": "population",
+      "answer": "U xơ tử cung có thể ảnh hưởng đến các đối tượng sau:\n1. Phụ nữ ở tuổi ba mươi\n2. Phụ nữ không có con\n3. Phụ nữ bị vô sinh sau sinh\n4. Phụ nữ từ 35 đến 45 tuổi",
+      "predicted_items": [
+        "phụ nữ ở tuổi ba mươi",
+        "phụ nữ không có con",
+        "phụ nữ bị vô sinh sau sinh",
+        "phụ nữ từ 35 đến 45 tuổi"
+      ],
+      "db_items": [
+        "phụ nữ ở tuổi ba mươi",
+        "phụ nữ không có con",
+        "phụ nữ bị vô sinh sau sinh",
+        "phụ nữ từ 35 đến 45 tuổi"
+      ],
+      "cypher_query": "MATCH (d:Disease {name: \"U xơ tử cung\"})-[:AFFECTS]->(p:Population)\nRETURN p.name",
+      "db_results_raw": "[{'p.name': 'phụ nữ ở tuổi ba mươi'}, {'p.name': 'phụ nữ không có con'}, {'p.name': 'phụ nữ bị vô sinh sau sinh'}, {'p.name': 'phụ nữ từ 35 đến 45 tuổi'}]",
+      "evaluation": {
+        "exact_match": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "count_accuracy": 1.0,
+        "matched_items": [
+          {
+            "database": "phụ nữ ở tuổi ba mươi",
+            "predicted": "phụ nữ ở tuổi ba mươi",
+            "similarity": 1.0
+          },
+          {
+            "database": "phụ nữ không có con",
+            "predicted": "phụ nữ không có con",
+            "similarity": 1.0
+          },
+          {
+            "database": "phụ nữ bị vô sinh sau sinh",
+            "predicted": "phụ nữ bị vô sinh sau sinh",
+            "similarity": 1.0
+          },
+          {
+            "database": "phụ nữ từ 35 đến 45 tuổi",
+            "predicted": "phụ nữ từ 35 đến 45 tuổi",
+            "similarity": 1.0
+          }
+        ],
+        "missed_items": [],
+        "extra_items": [],
+        "predicted_count": 4,
+        "actual_count": 4,
+        "notes": "Matched 4/4 items"
+      },
+      "success": true,
+      "error": null
+    },
+    {
+      "id": 4,
+      "question": "Vô kinh có những loại nào?",
+      "category": "types",
+      "answer": "Vô kinh có hai loại chính là:\n1. Vô kinh sinh lý\n2. Vô kinh bệnh lý",
+      "predicted_items": [
+        "vô kinh sinh lý",
+        "vô kinh bệnh lý"
+      ],
+      "db_items": [
+        "vô kinh sinh lý",
+        "vô kinh bệnh lý"
+      ],
+      "cypher_query": "MATCH (d:Disease {name: \"Vô kinh\"})-[:HAS_TYPE]->(t:Type)\nRETURN t.name",
+      "db_results_raw": "[{'t.name': 'Vô kinh sinh lý'}, {'t.name': 'Vô kinh bệnh lý'}]",
+      "evaluation": {
+        "exact_match": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "count_accuracy": 1.0,
+        "matched_items": [
+          {
+            "database": "vô kinh sinh lý",
+            "predicted": "vô kinh sinh lý",
+            "similarity": 1.0
+          },
+          {
+            "database": "vô kinh bệnh lý",
+            "predicted": "vô kinh bệnh lý",
+            "similarity": 1.0
+          }
+        ],
+        "missed_items": [],
+        "extra_items": [],
+        "predicted_count": 2,
+        "actual_count": 2,
+        "notes": "Matched 2/2 items"
+      },
+      "success": true,
+      "error": null
+    },
+    {
+      "id": 5,
+      "question": "Các triệu chứng của Mãn kinh?",
+      "category": "symptoms",
+      "answer": "Các triệu chứng của mãn kinh bao gồm:\n1. Giảm kích thước cơ quan sinh sản\n2. Mất 3-5% khối lượng xương mỗi năm\n3. Bốc hỏa\n4. Khó chịu\n5. Mất ngủ\n6. Dễ nổi nóng\n7. Trầm cảm\n8. Giảm ham muốn tình dục\n9. Nhiễm trùng âm đạo\n10. Khô âm đạo",
+      "predicted_items": [
+        "giảm kích thước cơ quan sinh sản",
+        "mất 3-5% khối lượng xương mỗi năm",
+        "bốc hỏa",
+        "khó chịu",
+        "mất ngủ",
+        "dễ nổi nóng",
+        "trầm cảm",
+        "giảm ham muốn tình dục",
+        "nhiễm trùng âm đạo",
+        "khô âm đạo"
+      ],
+      "db_items": [
+        "giảm kích thước cơ quan sinh sản",
+        "mất 3-5% khối lượng xương mỗi năm",
+        "bốc hỏa",
+        "khó chịu",
+        "mất ngủ",
+        "dễ nổi nóng",
+        "trầm cảm",
+        "giảm ham muốn tình dục",
+        "nhiễm trùng âm đạo",
+        "khô âm đạo"
+      ],
+      "cypher_query": "MATCH (d:Disease {name: \"Mãn kinh\"})-[:HAS_SYMPTOM]->(s:Symptom)\nRETURN s.name",
+      "db_results_raw": "[{'s.name': 'giảm kích thước cơ quan sinh sản'}, {'s.name': 'mất 3-5% khối lượng xương mỗi năm'}, {'s.name': 'bốc hỏa'}, {'s.name': 'khó chịu'}, {'s.name': 'mất ngủ'}, {'s.name': 'dễ nổi nóng'}, {'s.name': 'trầm cảm'}, {'s.name': 'giảm ham muốn tình dục'}, {'s.name': 'nhiễm trùng âm đạo'}, {'s.name': 'khô âm đạo'}]",
+      "evaluation": {
+        "exact_match": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "count_accuracy": 1.0,
+        "matched_items": [
+          {
+            "database": "giảm kích thước cơ quan sinh sản",
+            "predicted": "giảm kích thước cơ quan sinh sản",
+            "similarity": 1.0
+          },
+          {
+            "database": "mất 3-5% khối lượng xương mỗi năm",
+            "predicted": "mất 3-5% khối lượng xương mỗi năm",
+            "similarity": 1.0
+          },
+          {
+            "database": "bốc hỏa",
+            "predicted": "bốc hỏa",
+            "similarity": 1.0
+          },
+          {
+            "database": "khó chịu",
+            "predicted": "khó chịu",
+            "similarity": 1.0
+          },
+          {
+            "database": "mất ngủ",
+            "predicted": "mất ngủ",
+            "similarity": 1.0
+          },
+          {
+            "database": "dễ nổi nóng",
+            "predicted": "dễ nổi nóng",
+            "similarity": 1.0
+          },
+          {
+            "database": "trầm cảm",
+            "predicted": "trầm cảm",
+            "similarity": 1.0
+          },
+          {
+            "database": "giảm ham muốn tình dục",
+            "predicted": "giảm ham muốn tình dục",
+            "similarity": 1.0
+          },
+          {
+            "database": "nhiễm trùng âm đạo",
+            "predicted": "nhiễm trùng âm đạo",
+            "similarity": 1.0
+          },
+          {
+            "database": "khô âm đạo",
+            "predicted": "khô âm đạo",
+            "similarity": 1.0
+          }
+        ],
+        "missed_items": [],
+        "extra_items": [],
+        "predicted_count": 10,
+        "actual_count": 10,
+        "notes": "Matched 10/10 items"
+      },
+      "success": true,
+      "error": null
+    },
+    {
+      "id": 6,
+      "question": "Nguyên nhân của vô kinh?",
+      "category": "causes",
+      "answer": "Tôi không biết câu trả lời.",
+      "predicted_items": [],
+      "db_items": [],
+      "cypher_query": "MATCH (d:Disease {name: \"Vô kinh\"})-[:HAS_CAUSE]->(c:Cause)\nRETURN c.name",
+      "db_results_raw": "[]",
+      "evaluation": {
+        "exact_match": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "count_accuracy": 1.0,
+        "matched_items": [],
+        "missed_items": [],
+        "extra_items": [],
+        "notes": "Correctly identified no results"
+      },
+      "success": true,
+      "error": null
+    },
+    {
+      "id": 7,
+      "question": "Cách điều trị Viêm âm đạo?",
+      "category": "treatment",
+      "answer": "Các phương pháp điều trị Viêm âm đạo bao gồm:\n1. Clotrimazole (dạng kem hoặc thuốc đặt âm đạo)\n2. Miconazole dạng kem\n3. Thuốc đặt âm đạo\n4. Nystatin\n5. Clotrimazole\n6. Đặt vòng nâng pessary trong hai tuần khi đi ngủ",
+      "predicted_items": [
+        "clotrimazole (dạng kem hoặc thuốc đặt âm đạo)",
+        "miconazole dạng kem",
+        "thuốc đặt âm đạo",
+        "nystatin",
+        "clotrimazole",
+        "đặt vòng nâng pessary trong hai tuần khi đi ngủ"
+      ],
+      "db_items": [
+        "clotrimazole (dạng kem hoặc thuốc đặt âm đạo)",
+        "miconazole dạng kem",
+        "thuốc đặt âm đạo",
+        "nystatin",
+        "clotrimazole",
+        "đặt vòng nâng pessary trong hai tuần khi đi ngủ"
+      ],
+      "cypher_query": "MATCH (d:Disease {name: \"Viêm âm đạo\"})-[:HAS_TREATMENT]->(t:Treatment)\nRETURN t.name",
+      "db_results_raw": "[{'t.name': 'clotrimazole (dạng kem hoặc thuốc đặt âm đạo)'}, {'t.name': 'Miconazole dạng kem'}, {'t.name': 'Thuốc đặt âm đạo'}, {'t.name': 'nystatin'}, {'t.name': 'clotrimazole'}, {'t.name': 'đặt vòng nâng pessary trong hai tuần khi đi ngủ'}]",
+      "evaluation": {
+        "exact_match": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "count_accuracy": 1.0,
+        "matched_items": [
+          {
+            "database": "clotrimazole (dạng kem hoặc thuốc đặt âm đạo)",
+            "predicted": "clotrimazole (dạng kem hoặc thuốc đặt âm đạo)",
+            "similarity": 1.0
+          },
+          {
+            "database": "miconazole dạng kem",
+            "predicted": "miconazole dạng kem",
+            "similarity": 1.0
+          },
+          {
+            "database": "thuốc đặt âm đạo",
+            "predicted": "thuốc đặt âm đạo",
+            "similarity": 1.0
+          },
+          {
+            "database": "nystatin",
+            "predicted": "nystatin",
+            "similarity": 1.0
+          },
+          {
+            "database": "clotrimazole",
+            "predicted": "clotrimazole",
+            "similarity": 1.0
+          },
+          {
+            "database": "đặt vòng nâng pessary trong hai tuần khi đi ngủ",
+            "predicted": "đặt vòng nâng pessary trong hai tuần khi đi ngủ",
+            "similarity": 1.0
+          }
+        ],
+        "missed_items": [],
+        "extra_items": [],
+        "predicted_count": 6,
+        "actual_count": 6,
+        "notes": "Matched 6/6 items"
+      },
+      "success": true,
+      "error": null
+    },
+    {
+      "id": 8,
+      "question": "Các triệu chứng của Vô kinh thứ phát?",
+      "category": "symptoms",
+      "answer": "Triệu chứng của Vô kinh thứ phát bao gồm:\n1. Không xuất hiện kinh nguyệt từ 6 tháng trở lên.",
+      "predicted_items": [
+        "triệu chứng của vô kinh thứ phát bao gồm: 1. không xuất hiện kinh nguyệt từ 6 tháng trở lên."
+      ],
+      "db_items": [
+        "không xuất hiện kinh nguyệt từ 6 tháng trở lên"
+      ],
+      "cypher_query": "MATCH (sd:SubDisease {name: \"Vô kinh thứ phát\"})-[:HAS_SYMPTOM]->(s:Symptom)\nRETURN s.name",
+      "db_results_raw": "[{'s.name': 'không xuất hiện kinh nguyệt từ 6 tháng trở lên'}]",
+      "evaluation": {
+        "exact_match": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "count_accuracy": 1.0,
+        "matched_items": [
+          {
+            "database": "không xuất hiện kinh nguyệt từ 6 tháng trở lên",
+            "predicted": "triệu chứng của vô kinh thứ phát bao gồm: 1. không xuất hiện kinh nguyệt từ 6 tháng trở lên.",
+            "similarity": 0.85
+          }
+        ],
+        "missed_items": [],
+        "extra_items": [],
+        "predicted_count": 1,
+        "actual_count": 1,
+        "notes": "Matched 1/1 items"
+      },
+      "success": true,
+      "error": null
+    },
+    {
+      "id": 9,
+      "question": "Mãn kinh diễn ra ở người nào?",
+      "category": "population",
+      "answer": "Mãn kinh thường diễn ra ở phụ nữ từ 45 đến 55 tuổi.",
+      "predicted_items": [
+        "mãn kinh thường diễn ra ở phụ nữ từ 45 đến 55 tuổi."
+      ],
+      "db_items": [
+        "phụ nữ từ 45 đến 55 tuổi"
+      ],
+      "cypher_query": "MATCH (d:Disease {name: \"Mãn kinh\"})-[:AFFECTS]->(p:Population)\nRETURN p.name",
+      "db_results_raw": "[{'p.name': 'phụ nữ từ 45 đến 55 tuổi'}]",
+      "evaluation": {
+        "exact_match": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "count_accuracy": 1.0,
+        "matched_items": [
+          {
+            "database": "phụ nữ từ 45 đến 55 tuổi",
+            "predicted": "mãn kinh thường diễn ra ở phụ nữ từ 45 đến 55 tuổi.",
+            "similarity": 0.85
+          }
+        ],
+        "missed_items": [],
+        "extra_items": [],
+        "predicted_count": 1,
+        "actual_count": 1,
+        "notes": "Matched 1/1 items"
+      },
+      "success": true,
+      "error": null
+    },
+    {
+      "id": 10,
+      "question": "Biến chứng của U xơ tử cung?",
+      "category": "complications",
+      "answer": "Tôi không biết câu trả lời.",
+      "predicted_items": [],
+      "db_items": [],
+      "cypher_query": "MATCH (d:Disease {name: \"U xơ tử cung\"})-[:HAS_COMPLICATION]->(c:Complication)\nRETURN c.name",
+      "db_results_raw": "[]",
+      "evaluation": {
+        "exact_match": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "count_accuracy": 1.0,
+        "matched_items": [],
+        "missed_items": [],
+        "extra_items": [],
+        "notes": "Correctly identified no results"
+      },
+      "success": true,
+      "error": null
+    }
+  ]
+}
